@@ -20,13 +20,18 @@ const Dashboard = props => {
     getCurrentWeather
   } = props;
 
+  //useState
+  //weather array with group by date
   const [remakeWeather, setRemakeWeather] = React.useState([]);
+  //open modal
   const [openModal, setOpenModal] = React.useState(false);
+  //remake country data object key
   const [countryArr, setCountryArr] = React.useState([]);
-  // const [cityName, setCityName] = React.useState(city);
+  //set background picture
   const [cityBackground, setCityBackground] = React.useState();
-  // const [countryName, setCountryName] = React.useState()
 
+  //useEffect
+  //remake weather array's object item in object which is group by date
   React.useEffect(() => {
     if (forecast) {
       const groups = forecast.reduce((groups, day) => {
@@ -48,6 +53,7 @@ const Dashboard = props => {
     }
   }, [city, forecast]);
 
+  //remake country array's object to new value key pair for easy manage
   React.useEffect(() => {
     const remakeCountry = async () => {
       let res = await fetch(
@@ -66,11 +72,13 @@ const Dashboard = props => {
     remakeCountry();
   }, []);
 
+  //get default data
   React.useEffect(() => {
     getWeather("Hong Kong", "HK");
     getCurrentWeather("Hong Kong", "HK");
   }, [getWeather, getCurrentWeather]);
 
+  //change background picture when changing cities
   React.useEffect(()=>{
     const fetchPhoto = async (cityName, country) => {
       let url = `https://api.pexels.com/v1/search`;
@@ -91,6 +99,7 @@ const Dashboard = props => {
     fetchPhoto(city)
   }, [city]);
 
+  //function: calculate wind degree
   const degToCompass = num => {
     let value = parseInt(num / 22.5 + 0.5);
     const direction = [

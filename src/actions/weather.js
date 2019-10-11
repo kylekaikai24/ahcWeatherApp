@@ -1,5 +1,6 @@
 import { GET_WEATHER_SUCCESS, GET_CURRENT_WEATHER_SUCCESS, GET_WEATHER_ERROR } from "./types";
 
+//Get weather forecast
 export const getWeather = (city, countryCode) => async dispatch => {
   try {
     let url = `http://api.openweathermap.org/data/2.5/forecast`;
@@ -18,6 +19,7 @@ export const getWeather = (city, countryCode) => async dispatch => {
   }
 };
 
+//get weather current
 export const getCurrentWeather = (city, countryCode) => async dispatch => {
   try {
     let url = `http://api.openweathermap.org/data/2.5/weather`;

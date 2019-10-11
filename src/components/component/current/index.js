@@ -7,8 +7,10 @@ import { styles } from "./style";
 const Current = props => {
   const { classes, data, style, degToCompass, background } = props;
 
+  //useState
   const [current, setCurrent] = React.useState(data);
 
+  //useEffect
   React.useEffect(() => {
     setCurrent(data);
   }, [data]);
@@ -16,6 +18,7 @@ const Current = props => {
   return (
     <div
       className={classes.background}
+      // if photo return then set as background, else only overlay
       style={{
         ...{
           background:

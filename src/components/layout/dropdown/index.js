@@ -16,6 +16,7 @@ const Dropdown = props => {
     dropdownTitle
   } = props;
 
+  //inline style for library icon
   const styles = {
     dropdownArrow: {
       position: "absolute",

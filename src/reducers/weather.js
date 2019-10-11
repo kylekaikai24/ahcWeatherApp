@@ -1,6 +1,7 @@
 import {
     GET_WEATHER_SUCCESS,
-    GET_CURRENT_WEATHER_SUCCESS
+    GET_CURRENT_WEATHER_SUCCESS,
+    GET_WEATHER_ERROR
   } from "../actions/types";
   
   const initialState = {
@@ -27,6 +28,11 @@ import {
         return {
           ...state,
           current: payload,
+          loading: false
+        }
+      case GET_WEATHER_ERROR:
+        return {
+          ...state,
           loading: false
         }
       default:

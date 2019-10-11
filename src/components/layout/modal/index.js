@@ -19,11 +19,14 @@ const Modal = props => {
     countryArr
   } = props;
 
+  //useState
   const [cityName, setCity] = React.useState();
   const [country, setCountry] = React.useState();
+  //error message
   const [error, setError] = React.useState();
   const [showError, setShowError] = React.useState(false);
 
+  //function: remake city's array's object to match pass-in key value pair
   const remakeCity = () => {
     let remake = [];
     cityData.map(item => {
@@ -37,6 +40,7 @@ const Modal = props => {
     return remake;
   };
 
+  //function: submit to action and reducer
   const onSubmit = async (cityName, country) => {
     if (typeof cityName != "undefined" && typeof country != "undefined") {
       getWeather(cityName, country);
@@ -51,6 +55,7 @@ const Modal = props => {
     }
   };
 
+  //inline style for library icon
   const styles = {
     closeBtn: {
       position: "absolute",
